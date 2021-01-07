@@ -68,7 +68,7 @@ function logEverything()
 {
     console.log(canvas)
     console.log(canvasContent)
-    console.log(player)
+    console.log(dot)
 
     if (projectiles.length > 0)
         console.log(projectiles[projectiles.length - 1].velocity)
@@ -79,7 +79,7 @@ function start()
     setUpCanvas()
 }
 
-var player = new Player(innerWidth / 2, innerHeight / 2, 20, 'blue')
+var dot = new Dot(innerWidth / 2, innerHeight / 2, 20, 'blue')
 const projectiles = []
 const enemies = []
 var score = 0
@@ -111,7 +111,7 @@ function spawnEnemies() {
 function update() {
     requestAnimationFrame(update)
     canvasContent.clearRect(0, 0, canvas.width, canvas.height)
-    player.draw()
+    dot.draw()
 
     projectiles.forEach((projectile) =>{
         projectile.update()
@@ -129,8 +129,8 @@ function update() {
                 console.log(score)
             }
         })
-        const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y)
-        if (dist <= player.radius + enemy.radius) {
+        const dist = Math.hypot(dot.x - enemy.x, dot.y - enemy.y)
+        if (dist <= dot.radius + enemy.radius) {
             enemies.splice(enemyIndex, 1)
             alert(score)
             window.close()
