@@ -56,7 +56,7 @@ class Line {
             canvasContent.stroke();
         }
 
-        if (this.dots.length > 200) {
+        if (this.dots.length > this.countOfDots) {
             this.dots.splice(0, 1)
         }
     }
@@ -70,7 +70,7 @@ function setUpCanvas() {
 
 function start() {
     setUpCanvas()
-    line = new Line({x: -100, y: 500 }, {x:1500, y: 500}, 100)
+    line = new Line({ x: 0, y: 500 }, { x: 150, y: 500 }, prompt('How many dots you want to have'))
 }
 
 function update() {
