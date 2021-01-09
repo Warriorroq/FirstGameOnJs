@@ -64,11 +64,28 @@ var mousePos = {
     y: 0
 }
 
+//function load() {
+    //var json = JSON.parse('./save.json');
+    //line = new Line(0,0,0)
+    //line.countOfDots = json["countOfDots"]
+    //for (var i = 0; i < line.countOfDots; i++) {
+      //  var dot = new Dot(json["dots"][i]["x"], json["dots"][i]["y"])
+    //    line.push(dot)
+  //  }
+//}
+
+//function save() {
+    //var json = JSON.stringify(line)
+   // const fs = require('fs')  
+    //fs.writeFile('Output.txt', json, (err) => {
+    //    if (err) throw err;
+  //  }) 
+//}
 window.onmousemove = mouseMove;
 
 function setUpCanvas() {
     canvas.width = innerWidth
-    canvas.height = innerHeight
+    canvas.height = innerHeight //* 0.7
 }
 
 function start() {
