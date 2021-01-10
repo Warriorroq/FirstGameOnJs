@@ -5,6 +5,29 @@
 </head>
 <body>
     <style>
+
+        #inputfile {
+            width: 110px;
+            align-self: center;
+            box-shadow: 0 9px black;
+            transition-duration: .2s;
+            border-radius: 15px;
+            margin-left: 15%;
+        }
+
+            #inputfile:active {
+                transition-duration: .2s;
+                box-shadow: 0 5px black;
+                transform: translateY(4px);
+                border-radius: 15px;
+            }
+
+            #inputfile:hover {
+                transition-duration: .2s;
+                background-color: slategrey;
+                border-radius: 15px;
+            }
+
         #btn {
             width: 100px;
             align-self: center;
@@ -42,14 +65,13 @@
                 box-shadow: 0 2px 10px black;
             }
     </style>
-
     <button onclick="save()" id="btn">Save</button>
     <button onclick="load()" id="btn">Load</button>
+    <input type="file" name="inputfile" id="inputfile">
     <button onclick="reload()" id="btn">Reload</button>
 
     <canvas id="canvas"></canvas>
 
-    <input type="file" name="inputfile" id="inputfile">
     <script src="./mainSignature.js"></script>
 </body>
 </html>

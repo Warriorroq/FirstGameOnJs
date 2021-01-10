@@ -113,10 +113,7 @@ canvas.onmouseleave = function () {
 }
 
 
-const fileSelector = document.getElementById('file-selector');
-document.getElementById('inputfile')
-    .addEventListener('change', function () {
-
+document.getElementById('inputfile').addEventListener('change', function () {
         var fr = new FileReader();
         fr.onload = function () {
             file = fr.result
