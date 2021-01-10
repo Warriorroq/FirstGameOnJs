@@ -58,7 +58,11 @@ class Line {
 }
 
 var line;
-var draw = false;
+var draw = false
+var file
+
+const reader = new FileReader()
+
 var mousePos = {
     x: 0,
     y: 0
@@ -96,7 +100,7 @@ function updateLogic() {
             if (line == null)
                 line = new Line({ x: mousePos.x, y: mousePos.y }, { x: mousePos.x, y: mousePos.y }, 2)
 
-            var dot = new Dot(mousePos.x, mousePos.y)
+            var dot = new Dot(mousePos.x - 60, mousePos.y - 60)
             line.push(dot)
         }
     }, 1)
@@ -107,6 +111,19 @@ canvas.onclick = function () {
 canvas.onmouseleave = function () {
     draw = false
 }
+
+
+const fileSelector = document.getElementById('file-selector');
+document.getElementById('inputfile')
+    .addEventListener('change', function () {
+
+        var fr = new FileReader();
+        fr.onload = function () {
+            file = fr.result
+        }
+
+        fr.readAsText(this.files[0]);
+    }) 
 
 
 function save(){
@@ -122,14 +139,9 @@ function save(){
 
 }
 function load() {
-    var input = prompt()
-    var json = JSON.parse(input);
-    line = new Line(0, 0, 2)
-    line.countOfDots = json["countOfDots"]
-    for (var i = 0; i < line.countOfDots; i++) {
-        var dot = new Dot(json["dots"][i]["x"], json["dots"][i]["y"])
-        line.push(dot)
-    }
+    var json = JSON.parse(file);
+    line = new Line(0, 0, JSON.parse(file).countOfDots)
+    line.dots = JSON.parse(file).dots
 }
 function reload() {
     line = new Line(0, 0, 2)
