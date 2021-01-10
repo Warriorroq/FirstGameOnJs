@@ -95,7 +95,7 @@ function updateLogic() {
         }
 
         if (line.dots.length > line.countOfDots) {
-            //line.dots.splice(0, 1)
+            line.dots.splice(0, 1)
         }
     }, 1)
 }

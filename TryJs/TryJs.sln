@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ballShoot.js = ballShoot.js
 		index.html = index.html
 		main.js = main.js
+		mainSignature.js = mainSignature.js
+		signature.html = signature.html
 	EndProjectSection
 EndProject
 Global

@@ -64,28 +64,11 @@ var mousePos = {
     y: 0
 }
 
-//function load() {
-    //var json = JSON.parse('./save.json');
-    //line = new Line(0,0,0)
-    //line.countOfDots = json["countOfDots"]
-    //for (var i = 0; i < line.countOfDots; i++) {
-      //  var dot = new Dot(json["dots"][i]["x"], json["dots"][i]["y"])
-    //    line.push(dot)
-  //  }
-//}
-
-//function save() {
-    //var json = JSON.stringify(line)
-   // const fs = require('fs')  
-    //fs.writeFile('Output.txt', json, (err) => {
-    //    if (err) throw err;
-  //  }) 
-//}
 window.onmousemove = mouseMove;
 
 function setUpCanvas() {
     canvas.width = innerWidth
-    canvas.height = innerHeight //* 0.7
+    canvas.height = innerHeight * 0.7
 }
 
 function start() {
@@ -121,7 +104,31 @@ addEventListener('click', (event) => {
     
 })
 
+function save(){
+    const a = document.createElement('a');
+    const text = JSON.stringify(line);
+    const file = new Blob([text], { type: 'text/plain' });
 
+    a.href = URL.createObjectURL(file);
+    a.download = 'my-new-file.json';
+    a.click();
+
+    URL.revokeObjectURL(a.href);
+
+}
+function load() {
+    var input = prompt()
+    var json = JSON.parse(input);
+    line = new Line(0, 0, 2)
+    line.countOfDots = json["countOfDots"]
+    for (var i = 0; i < line.countOfDots; i++) {
+        var dot = new Dot(json["dots"][i]["x"], json["dots"][i]["y"])
+        line.push(dot)
+    }
+}
+function reload() {
+    line = new Line(0, 0, 2)
+}
 
 start()
 update()
