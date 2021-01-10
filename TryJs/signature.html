@@ -1,5 +1,55 @@
-﻿<button onclick="save()">Save</button>
-<button onclick="load()">Load</button>
-<button onclick="reload()">Reload</button>
-<canvas></canvas>
-<script src="./mainSignature.js"></script>
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <style>
+        #btn {
+            width: 100px;
+            align-self: center;
+            box-shadow: 0 9px black;
+            transition-duration: .2s;
+            border-radius: 15px;
+            margin-left:15%;
+        }
+
+        #btn:active {
+            transition-duration: .2s;
+            box-shadow: 0 5px black;
+            transform: translateY(4px);
+            border-radius: 15px;
+
+        }
+
+        #btn:hover {
+            transition-duration: .2s;
+            background-color: slategrey;
+            border-radius: 15px;
+        }
+
+        #canvas {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            margin-left: 3%;
+            transition-duration: .2s;
+            margin-top: 2%;
+            box-shadow: 0 5px 10px black;
+        }
+
+        #canvas:hover {
+            transition-duration: .2s;
+            box-shadow: 0 2px 10px black;
+        }
+    </style>
+
+    <button onclick = "save()" id = "btn">Save</button>
+    <button onclick = "load()" id = "btn">Load</button>
+    <button onclick = "reload()" id = "btn">Reload</button>
+
+    <canvas id = "canvas"></canvas>
+
+    <script src="./mainSignature.js"></script>
+</body>
+</html>

@@ -58,7 +58,7 @@ class Line {
 }
 
 var line;
-
+var draw = false;
 var mousePos = {
     x: 0,
     y: 0
@@ -67,13 +67,14 @@ var mousePos = {
 window.onmousemove = mouseMove;
 
 function setUpCanvas() {
-    canvas.width = innerWidth
+    canvas.width = innerWidth * 0.9
     canvas.height = innerHeight * 0.7
 }
 
 function start() {
     setUpCanvas()
-    line = new Line({ x: 0, y: 0 }, { x: 0, y: 0 }, 2)
+    if (draw == true)
+        line = new Line({ x: 0, y: 0 }, { x: 0, y: 0 }, 2)
 }
 
 function mouseMove(event) {
@@ -83,26 +84,30 @@ function mouseMove(event) {
 
 function update() {
     requestAnimationFrame(update)
+    setUpCanvas()
     canvasContent.clearRect(0, 0, canvas.width, canvas.height)
-    line.draw()
+    if(line != null)
+        line.draw()
 }
 
 function updateLogic() {
     setInterval(() => {
-        if (mousePos.x != null || mousePos != null) {
+        if ((mousePos.x != null || mousePos != null) && draw == true) {
+            if (line == null)
+                line = new Line({ x: mousePos.x, y: mousePos.y }, { x: mousePos.x, y: mousePos.y }, 2)
+
             var dot = new Dot(mousePos.x, mousePos.y)
             line.push(dot)
         }
-
-        if (line.dots.length > line.countOfDots) {
-            //line.dots.splice(0, 1)
-        }
     }, 1)
 }
+canvas.onclick = function () {
+    draw = !draw
+}
+canvas.onmouseleave = function () {
+    draw = false
+}
 
-addEventListener('click', (event) => {
-    
-})
 
 function save(){
     const a = document.createElement('a');
